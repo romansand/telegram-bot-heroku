@@ -3,7 +3,7 @@ const http = require('http')
 
 const BOT_TOKEN = '534912162:AAH3xupuDJEhetwqZatv9o3w2Q2T8H3u1eA'
 
-http.createServer.listen(process.env.PORT || 5000).on('request', (req, res) => {
+http.createServer().listen(process.env.PORT || 5000).on('request', (req, res) => {
     res.end('')
 })
 
