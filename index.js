@@ -25,3 +25,16 @@ bot.on('message', msg => {
         console.log(res)
     })
 })
+
+bot.onText(/^\/get_logs$/, function (msg, match) {
+    db.getLogs((res) => {
+        res
+            .sort((a, b) => new Date(a.timestamp).getTime() > new Date(b.timestamp).getTime())
+            .map((el, idx) => {
+                //bot.sendMessage(msg.chat.id, 'Current element: ' + JSON.stringify(el))
+                console.log(el.message.text);
+                setTimeout(() => bot.forwardMessage(msg.chat.id, el.message.chat_id, el.message.id), idx * 100
+                )
+            })
+    })
+})
