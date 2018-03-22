@@ -20,6 +20,8 @@ bot.on('message', msg => {
         text: msg.text
     })
     // console.log(`${msg.from.first_name}: ${msg.text}`)
-    console.log(db.getLogs(res))
     bot.sendMessage(msg.chat.id, `Hello ${msg.from.first_name}`)
+    db.getLogs((res) => {
+        console.log(res)
+    })
 })
